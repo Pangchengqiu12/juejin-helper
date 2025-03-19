@@ -15,6 +15,7 @@ module.exports = {
   EMAIL_USER: env.EMAIL_USER,
   EMAIL_PASS: env.EMAIL_PASS,
   EMAIL_TO: env.EMAIL_TO,
+  EMAIL_HOST: env.EMAIL_HOST,
   /**
    * 钉钉配置
    * https://open.dingtalk.com/document/robots/custom-robot-access

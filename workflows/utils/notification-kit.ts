@@ -23,9 +23,10 @@ export class NotificationKit {
    * @param options
    */
   async email(options: EmailOptions) {
-    const auth: { user: string | undefined; pass: string | undefined } = {
+    const auth: { user: string | undefined; pass: string | undefined, host: string | undefined } = {
       user: env.EMAIL_USER, // generated ethereal user
-      pass: env.EMAIL_PASS // generated ethereal password
+      pass: env.EMAIL_PASS, // generated ethereal password
+      host: env.EMAIL_HOST, // generated ethereal email smtp server
     };
 
     if (!auth.user || !auth.pass || auth.user === "" || auth.pass === "") {
@@ -33,7 +34,7 @@ export class NotificationKit {
     }
 
     const transporter = nodemailer.createTransport({
-      host: "smtp." + (auth.user as any).match(/@(.*)/)[1],
+      host: env.EMAIL_HOST || ("smtp." + (auth.user as any).match(/@(.*)/)[1]),
       secure: true,
       port: 465,
       auth,
