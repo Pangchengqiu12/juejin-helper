@@ -336,7 +336,7 @@ async function run(args) {
       await checkin.run(); // 执行
       const content = checkin.toString();
       console.log(content); // 打印结果
-  
+
       messageList.push(content);
     } catch(e) {
       console.log('报错了', e)
@@ -346,7 +346,7 @@ async function run(args) {
 
   const message = messageList.join(`\n${"-".repeat(15)}\n`);
   notification.pushMessage({
-    title: "掘金每日签到",
+    title: "掘金每日签到 ✅",
     content: message,
     msgtype: "text"
   });
@@ -354,7 +354,7 @@ async function run(args) {
 
 run(process.argv.splice(2)).catch(error => {
   notification.pushMessage({
-    title: "掘金每日签到",
+    title: "掘金每日签到 ❌",
     content: `<strong>Error</strong><pre>${error.message}</pre>`,
     msgtype: "html"
   });
